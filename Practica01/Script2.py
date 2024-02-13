@@ -66,39 +66,44 @@ class Nodo:
 
     def pre_orden(self):
         """
-        Recorrido preorden del árbol. Imprime el valor del nodo actual y después realiza las llamadas
+        Recorrido preorden del árbol. Agrega el valor del nodo actual a la lista y después realiza las llamadas
         al subárbol izquierdo y derecho.
+        :return: nodos: lista de nodos siguiendo un recorrido pre-orden
         """
-        print(self.valor, end=" ")
-        if self.izquierdo is not None:
-            self.izquierdo.pre_orden()
-        if self.derecho is not None:
-            self.derecho.pre_orden()
+        nodos = [self.valor]
+        if self.izquierdo:
+            nodos.extend(self.izquierdo.pre_orden())
+        if self.derecho:
+            nodos.extend(self.derecho.pre_orden())
+        return nodos
 
     def post_orden(self):
         """
         Recorrido postorden del árbol. Realiza las llamadas al subárbol izquierdo y derecho,
-        posteriormente se imprime el nodo actual
-        :return:
+        posteriormente se agrega el valor del nodo actual a la lista
+        :return: nodos: lista de nodos siguiendo un recorrido post-orden
         """
-        if self.izquierdo is not None:
-            self.izquierdo.post_orden()
-        if self.derecho is not None:
-            self.derecho.post_orden()
-        print(self.valor, end=" ")
+        nodos = []
+        if self.izquierdo:
+            nodos.extend(self.izquierdo.post_orden())
+        if self.derecho:
+            nodos.extend(self.derecho.post_orden())
+        nodos.append(self.valor)
+        return nodos
 
     def in_orden(self):
         """
-        Recorrido inordern del árbol. Realiza la llamada al subárbol izquierdo, después
-        imprime el nodo actual y finalmente realiza la llamada al subárbol derecho
-        :return:
+        Recorrido inorder del árbol. Realiza la llamada al subárbol izquierdo, después
+        agrega el nodo actual y finalmente realiza la llamada al subárbol derecho
+        :return: nodos: lista de nodos siguiendo un recorrido in-orden
         """
-        if self.izquierdo is not None:
-            self.izquierdo.in_orden()
-        print(self.valor, end=" ")
-        if self.derecho is not None:
-            self.derecho.in_orden()
-
+        nodos = []
+        if self.izquierdo:
+            nodos.extend(self.izquierdo.in_orden())
+        nodos.append(self.valor)
+        if self.derecho:
+            nodos.extend(self.derecho.in_orden())
+        return nodos
 
 if __name__ == '__main__':
     cadena = input("Ingrese una cadena que consista solo de caracteres 'D' y 'U': ")
@@ -117,13 +122,9 @@ if __name__ == '__main__':
     nodo.agrega(12)
     nodo.agrega(18)
 
-    print("Pre-orden: ", end="")
-    nodo.pre_orden()
-    print(" ")
-    print("In-orden: ", end="")
-    nodo.in_orden()
-    print(" ")
-    print("Post-orden: ", end="")
-    nodo.post_orden()
+    print("Pre-orden: ", nodo.pre_orden())
+    print("In-orden: ", nodo.in_orden())
+    print("Post-orden", nodo.post_orden())
+
 
 
