@@ -22,6 +22,15 @@ def numero_de_valles(cadena):
             es_valle = True
     return respuesta
 
+def validar_input_valles(cadena):
+    caracteres_validos = {'D', 'U'}
+    return all(caracter in caracteres_validos for caracter in cadena)
+
 if __name__ == '__main__':
-    print(numero_de_valles("UDDU"))
-    print(numero_de_valles("UDUUDDDUDU"))
+    cadena = input("Ingrese una cadena que consista solo de caracteres 'D' y 'U': ")
+    while not validar_input_valles(cadena):
+        print("Cadena invalida.")
+        cadena = input("Ingrese una cadena que consista solo de caracteres 'D' y 'U': ")
+    print(numero_de_valles(cadena))
+
+
