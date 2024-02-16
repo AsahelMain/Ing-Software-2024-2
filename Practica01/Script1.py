@@ -36,23 +36,30 @@ def juego(jugador1, jugador2):
 
 
 
-def set(jugador1, jugador2, contador_sets):
+def set(jugador1, jugador2, contador_sets, saque):
     juegos_jugador1 = 0
     juegos_jugador2 = 0
     contador_juegos = 1
+
     while abs(juegos_jugador1 - juegos_jugador2) < 2 or (juegos_jugador1 < 6 and juegos_jugador2 < 6):
-        print(f"Set {contador_sets} - Juego: {contador_juegos}")
+        print(f"Set {contador_sets} - Juego: {contador_juegos}  Sirve: {saque}")
         print("----------------------")
         contador_juegos += 1
         if(juego(jugador1, jugador2)):
             juegos_jugador1 += 1
         else:
             juegos_jugador2 += 1
+        saque = jugador1 if saque == jugador2 else jugador2
 
+        print(f"\nMarcador de juegos: {juegos_jugador1} - {juegos_jugador2}")
+        if (juegos_jugador1 + juegos_jugador2) % 2 != 0:
+            print("--- Cambio de cancha ---")
 
     if juegos_jugador1 > juegos_jugador2:
+        print(f"El jugador que ganó el set es {jugador1}")
         return True
     else:
+        print(f"El jugador que ganó el set es {jugador2}")
         return False
 
 def partido():
@@ -63,19 +70,26 @@ def partido():
     num_sets_jugador2 = 0
 
     contador_sets = 1
+    saque = jugador1
+
 
     for i in range(3):
-        if(set(jugador1, jugador2, contador_sets)):
+        if(set(jugador1, jugador2, contador_sets, saque)):
             num_sets_jugador1 += 1
         else:
             num_sets_jugador2 += 1
+
+        print(f"Marcador de sets: {num_sets_jugador1} - {num_sets_jugador2}")
+
         if num_sets_jugador1 >= 2:
             print("El jugador que resultó ganador en el partido fue: ", jugador1)
             break
-        elif num_sets_jugador1 >= 2:
+        elif num_sets_jugador2 >= 2:
             print("El jugador que resultó ganador en el partido fue: ", jugador2)
             break
         contador_sets += 1
+
+        saque = jugador1 if saque == jugador2 else jugador2
 
 if __name__ == '__main__':
     partido()
