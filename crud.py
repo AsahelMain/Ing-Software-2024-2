@@ -43,6 +43,26 @@ movies = ["Toy Story 1",
 
 genre = ["Terror", "Aventura", "Misterio", "Comedia", "Fantasia"]
 
+def remove_rents(connection):
+    with connection.cursor() as cursor:
+        limit = datetime.date.today() - datetime.timedelta(days=3)
+        formatted_limit = limit.strftime("%Y-%m-%d")
+        cursor.execute(
+            "DELETE FROM `rentar` WHERE `fecha_renta` < %s",
+            (formatted_limit,)
+        )
+
+    connection.commit()
+
+def change_movie_genre(connection, movie, genre):
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "UPDATE `peliculas` SET `genero` = %s WHERE `nombre` = %s",
+            (genre, movie)
+        )
+    
+    connection.commit()
+
 def filter_users(connection, filter_string):
     with connection.cursor() as cursor:
         cursor.execute(
@@ -81,7 +101,7 @@ def insert(connection):
         )
 
         movie_id = cursor.lastrowid
-        rent_date = datetime.date(random.randint(2022,2023), random.randint(1, 12), random.randint(1,29))
+        rent_date = datetime.date(random.randint(2023,2024), random.randint(1, 12), random.randint(1,29))
 
         cursor.execute(
             "INSERT INTO `rentar` (`idUsuario`, `idPelicula`, `fecha_renta`, `dias_de_renta`, `estatus`) VALUES (%s, %s, %s, %s, %s)",
@@ -102,4 +122,9 @@ if __name__ == "__main__":
     insert(connection) 
     filter_string = input("Enter a string to filter users: ")
     filter_users(connection, filter_string)
+
+    movie_name = input("Enter a movie name to change its genre: ")
+    genre_name = input("Enter the new genre: ")
+    change_movie_genre(connection, movie_name, genre_name)
+    remove_rents(connection)
 
