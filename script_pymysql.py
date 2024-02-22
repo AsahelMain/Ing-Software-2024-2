@@ -43,6 +43,8 @@ movies = ["Toy Story 1",
 
 genre = ["Terror", "Aventura", "Misterio", "Comedia", "Fantasia"]
 
+# 1.4 Una función que elimine todas las rentas anteriores a 3 días a la fecha en que se
+# ejecuta la función
 def remove_rents(connection):
     with connection.cursor() as cursor:
         limit = datetime.date.today() - datetime.timedelta(days=3)
@@ -54,6 +56,8 @@ def remove_rents(connection):
 
     connection.commit()
 
+# 1.3 Una función que dado el nombre de una película y un género, se cambia
+# el género a dicha película
 def change_movie_genre(connection, movie, genre):
     with connection.cursor() as cursor:
         cursor.execute(
@@ -63,6 +67,9 @@ def change_movie_genre(connection, movie, genre):
     
     connection.commit()
 
+
+# 1.2 Una función que filtre a la tabla Usuario a todos los usuarios cuyo
+# apellido termine en alguna cadena especificada por el usuario
 def filter_users(connection, filter_string):
     with connection.cursor() as cursor:
         cursor.execute(
@@ -74,7 +81,7 @@ def filter_users(connection, filter_string):
         for user in output:
             print(user)
 
-
+# 1.1 Una función que inserte al menos 1 registro en cada tabla
 def insert(connection):
     with connection.cursor() as cursor:
         name = random.choice(names)
@@ -126,5 +133,4 @@ if __name__ == "__main__":
     movie_name = input("Enter a movie name to change its genre: ")
     genre_name = input("Enter the new genre: ")
     change_movie_genre(connection, movie_name, genre_name)
-    remove_rents(connection)
 
