@@ -39,10 +39,6 @@ def get_new_date():
     
     return datetime.date(year=year,month=month,day=day)
     
-    
-
-
-        
 
 def change_rent_date(rent_id, new_date):
     rent = get_rent_by_id(rent_id)
@@ -52,3 +48,21 @@ def change_rent_date(rent_id, new_date):
         return True
     else:
         return False
+
+def delete_rent(rent_id):
+    rent = get_rent_by_id(rent_id)
+
+    if rent:
+        db.session.delete(rent)
+        db.session.commit()
+        return True
+    else:
+        return False
+
+def delete_all_rents():
+    rents = Renta.query.all()
+
+    for rent in rents:
+        db.session.delete(rent)
+        
+    db.session.commit()

@@ -16,3 +16,21 @@ def change_movie_name(movie_id, new_name):
         return True
     else:
         return False
+
+def delete_movie(movie_id):
+    movie = get_movie_by_id(movie_id)
+
+    if movie:
+        db.session.delete(movie)
+        db.session.commit()
+        return True
+    else: 
+        return False
+
+def delete_all_movies():
+    movies = Pelicula.query.all()
+
+    for movie in movies:
+        db.session.delete(movie)
+        
+    db.session.commit()
