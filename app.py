@@ -140,11 +140,68 @@ if __name__ == '__main__':
             print("1. Por id")
             print("2. Eliminar todos los registros")
 
-            accion = -1
-            while accion < 1 or accion > 2:
-                accion = int(input("Ingresa la opcion que deseas realizar:"))
-                if accion < 1 or accion > 2:
-                    print("Ingresa una opcion valida")
+            accion = 0
+            while accion not in [1,2]:
+                try:
+                    accion = int(input("Ingresa la opcion que deseas realizar:"))
+                    if accion not in [1,2]:
+                        print("Ingresa una opcion válida")
+                except ValueError:
+                    print("Ingresa una opcion válida")
+            
+            if accion == 1:
+                print("Tablas disponibles:")
+                print("1. Usuario")
+                print("2. Peliculas")
+                print("3. Rentar")
+                
+                tabla = 0
+                while tabla not in [1,2,3]:
+                    try:
+                        tabla = int(input("Ingresa la tabla sobre la que quieres trabajar: "))
+                        if tabla not in [1,2,3]:
+                            print("Ingresa una tabla válida")
+                    except ValueError:
+                        print("Ingresa una tabla válida")
+                
+                if tabla == 1:
+                    user_id = int(input("Ingresa el id del usuario para eliminar: "))
+                    delete_user(user_id)
+                
+                elif tabla == 2:
+                    movie_id = int(input("Ingresa el id de la pelicula para eliminar: "))
+                    delete_movie(movie_id)
+                
+                elif tabla == 3:
+                    rent_id = int(input("Ingresa el id de la renta para eliminar: "))
+                    delete_rent(rent_id)
+
+            elif accion == 2:
+                print("Tablas disponibles:")
+                print("1. Usuario")
+                print("2. Peliculas")
+                print("3. Rentar")
+                
+                tabla = 0
+                while tabla not in [1,2,3]:
+                    try:
+                        tabla = int(input("Ingresa la tabla sobre la que quieres trabajar: "))
+                        if tabla not in [1,2,3]:
+                            print("Ingresa una tabla válida")
+                    except ValueError:
+                        print("Ingresa una tabla válida")
+
+                if tabla == 1:
+                    delete_all_users()
+                    print("Todos los usuarios eliminados exitosamente")
+                elif tabla == 2:
+                    delete_all_movies()
+                    print("Todos las peliculas eliminados exitosamente")
+                elif tabla == 3:
+                    delete_all_rents()
+                    print("Todos las rentas eliminadas exitosamente")
+
+                
             
             
       
