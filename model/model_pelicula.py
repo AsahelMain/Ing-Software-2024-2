@@ -6,4 +6,13 @@ def get_movies():
         print(f'{movie}\n')
 
 def get_movie_by_id(movie_id):
-    print(f'{Pelicula.query.filter(Pelicula.idPelicula == movie_id).first()}\n')
+    return Pelicula.query.filter(Pelicula.idPelicula == movie_id).first()
+
+def change_movie_name(movie_id, new_name):
+    movie = get_movie_by_id(movie_id)
+    if movie:
+        movie.nombre = new_name
+        db.session.commit()
+        return True
+    else:
+        return False
