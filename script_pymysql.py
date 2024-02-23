@@ -2,44 +2,31 @@ import pymysql
 import random
 import datetime
 
-names = ["Patricio", 
-          "Patricia", 
-          "Omar", 
-          "Abraham", 
-          "Arsenio", 
-          "Dulce", 
-          "Alan", 
-          "Jorge", 
-          "Pedro",
-          "Arturo",
-          "Laura",
-          "Carmen"
+names = ["Patricio","Patricia", 
+          "Omar","Abraham", 
+          "Arsenio","Dulce", 
+          "Alan","Jorge", 
+          "Pedro","Arturo",
+          "Laura","Carmen",
+          "Martín", "Karen"
           ]
 
-last_names = ["Garcia",
-             "Gonzalez",
-             "Perez",
-             "Estrella",
-             "Lopez",
-             "Burger",
-             "Paramo",
-             "Verde",
-             "Cholula",
-             "Lechuga",
-             "Selano"
+last_names = ["Garcia","Gonzalez",
+             "Perez","Estrella",
+             "Lopez","Burger",
+             "Paramo","Verde",
+             "Cholula","Lechuga",
+             "Selano","Canguro",
+             "Tostada","Con Tinga",
+             "Moco", "Brazo"
             ]
 
-movies = ["Toy Story 1",
-             "Toy Story 2",
-             "Toy Story 3",
-             "Toy Story 4",
-             "Cars 1",
-             "Cars 2",
-             "Cars 3",
-             "Star Wars 4",
-             "Star Wars 5",
-             "Star Wars 6",
-             ]
+movies = ["Toy Story 1","Toy Story 2",
+          "Toy Story 3","Toy Story 4",
+          "Cars 1","Cars 2",
+          "Cars 3","Star Wars 4",
+          "Star Wars 5","Star Wars 6",
+         ]
 
 genre = ["Terror", "Aventura", "Misterio", "Comedia", "Fantasia"]
 
@@ -88,7 +75,7 @@ def insert(connection):
         last_name1 = random.choice(last_names)
         last_name2 = random.choice(last_names)
         password = "myuniquesecretpassword" + str(random.randint(1,900))
-        email = name + str(random.randint(1,300)) + "@test.com"
+        email = name + last_name1 + str(random.randint(1,9999)) + "@test.com"
 
         cursor.execute(
             "INSERT INTO `usuarios` (`nombre`, `apPat`, `apMat`, `password`, `email`, `superuser`) VALUES (%s, %s, %s, %s, %s, %s)",
