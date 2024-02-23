@@ -8,6 +8,7 @@ class Pelicula(db.Model):
     genero = Column(String(45), nullable=True)
     duracion = Column(Integer, nullable=True)
     inventario = Column(Integer, default=1)
+    renta = db.relationship("Renta", cascade="all, delete-orphan")
 
     def __init__(self, nombre, genero=None,duracion=None,inventario=1):
         self.nombre = nombre
