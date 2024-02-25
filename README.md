@@ -1,10 +1,28 @@
 # Ingeniería de Software 2024-2
-Repositorio oficial de la materia de Ingenieria de Software de la Facultad de Ciencias de la UNAM del semestre 2024-2
 
-## Profesores:
+## Práctica 02: PyMySQL y Alchemy
 
-- Francisco Valdes Souto
-- Valeria Garcia Landa
-- Fernando Fong
-- Erick Martínez Piza
-- Rogelio Alcantar Arenas
+Revisar el archivo requirements.txt para ver los requerimientos del entorno.
+
+-> Se modificó el usuario en el archivo sql, de 'lab' a 'asmc'. <-
+
+### PyMySQL
+
+Ejecutar el comando:
+
+```bash
+python script_pymysql.py
+```
+
+### Alchemy
+
+Ejecutar el comando:
+
+```bash
+python app.py
+```
+
+
+
+
+
