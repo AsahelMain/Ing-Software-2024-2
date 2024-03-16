@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template, flash, url_for
+from model import model_usuario
 
 blueprint_usuario = Blueprint('usuario', __name__, url_prefix='/usuario')
 
@@ -16,10 +17,11 @@ def agregar_alumno():
         
         is_super_user = super_user == 'yes'
 
-        
-        v = randint(0, 2)
-        if v == 1:
-            flash("Hello from flash!")
-            return url_for('alumno.agregar_alumno')
-        # Y regreso al flujo que me hayan especificado.
-        return render_template('user_added.html', name=name, num_cta=num_cta)
+        try:
+            model_usuario.add_user(name,ap_pat,password,ap_mat,email,None,is_super_user)
+            return render_template('resultado.html', titulo="Agregar usuario", resultado="Se agregó el usuario exitosamente :)")
+        except Exception as e:
+            print(e)
+            return render_template('resultado.html', titulo="Agregar usuario", resultado="Ocurrió un problema al agregar el usuario :(")
+
+
