@@ -4,7 +4,7 @@ from model import model_usuario
 blueprint_usuario = Blueprint('usuario', __name__, url_prefix='/usuario')
 
 @blueprint_usuario.route('/agregar', methods=['GET', 'POST'])
-def agregar_alumno():
+def agregar_usuario():
     if request.method == 'GET':
         return render_template('agrega_usuario.html')
     else:
