@@ -1,4 +1,4 @@
-#!/home/ferfong/Git/Ing-Software-2024-2/flaskProject/venv/bin/python
+#!/home/asahel/Universidad/sexto-semestre/ingenieria-de-software/Ing-Software-2024-2/flaskProject/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
