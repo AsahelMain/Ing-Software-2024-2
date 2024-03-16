@@ -6,7 +6,7 @@ from controllers.ControllerAlumno import alumno_blueprint
 from controllers.ControladorUsuario import blueprint_usuario
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://asmc:Develooper123!@localhost:3306/ing_soft'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://asmc:Developer123!@localhost:3306/lab_ing_software'
 app.config.from_mapping(
     SECRET_KEY='dev'
 )
