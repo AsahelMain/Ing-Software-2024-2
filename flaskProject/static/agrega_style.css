@@ -41,7 +41,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
     width: calc(100% - 10px);
     padding: 8px;
     margin-bottom: 10px;
@@ -50,7 +51,8 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="number"]:focus {
     outline: none;
     border-color: #8884ff;
 }
