@@ -5,9 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CloneBuster</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>CloneBuster</h1>
+    <div class="first-section">
+        <div class="container">
+            <div class="header">
+                <div class="text main">CLONEBUSTER</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="crud-section">
+        <div class="centered-square">
+            <a href="/usuario/agregar" class="button create">Agregar Usuario</a>
+            <a href="#" class="button read">Consultar Usuarios</a>
+            <a href="#" class="button update">Actualizar Usuario</a>
+            <a href="#" class="button delete">Borrar Usuario</a>
+        </div>
+    </div>
+
+    <div class="crud-section">
+        <div class="centered-square">
+            <a href="#" class="button create">Agregar Película</a>
+            <a href="#" class="button read">Consultar Películas</a>
+            <a href="#" class="button update">Actualizar Película</a>
+            <a href="#" class="button delete">Borrar Película</a>
+        </div>
+    </div>
+
+    <div class="crud-section">
+        <div class="centered-square">
+            <a href="#" class="button create">Agregar Renta</a>
+            <a href="#" class="button read">Consultar Rentas</a>
+            <a href="#" class="button update">Actualizar Renta</a>
+        </div>
+    </div>
+    
     <a href="/mpb/html">Regresar</a>
 </body>
 </html>
