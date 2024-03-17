@@ -9,8 +9,7 @@ def add_user(name, ap_pat, password, ap_mat=None, email=None, profile_picture=No
 
 
 def get_users():
-    for user in Usuario.query.all():
-        print(f'{user}\n')
+    return Usuario.query.all()
 
 def get_user_by_id(user_id):
     return Usuario.query.filter(Usuario.idUsuario == user_id).first()
