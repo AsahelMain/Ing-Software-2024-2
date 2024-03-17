@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rentar película</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='agrega_style.css') }}">
+</head>
+<body>
+    <h1>Rentar película</h1>
+    <form method="post">
+        <label for="user_id">ID Usuario:</label>
+        <input type="text" name="user_id" id="user_id" required>
+        <br>
+        <label for="movie_id">ID Película:</label>
+        <input type="text" name="movie_id" id="movie_id" required>
+        <br>
+        <label for="rent_date">Fecha de renta YYYY-MM-DD:</label>
+        <input type="text" name="rent_date" id="rent_date" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required>
+        <br>
+        <label for="rent_days">Días de renta:</label>
+        <input type="number" name="rent_days" id="rent_days">
+        <br>
+        <label for="status">Estatus:</label>
+        <select name="status" id="status">
+            <option value="true">1</option>
+            <option value="false">0</option>
+        </select>
+        <br>
+        <button>Agregar renta</button>
+    </form>
+    {% if get_flashed_messages() %}
+        {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

@@ -2,9 +2,15 @@ from alchemyClasses.Renta import Renta
 from alchemyClasses import db
 import datetime
 
+def add_rent(idUsuario, idPelicula, fecha_renta, dias_de_renta=5, estatus=0):
+    new_rent = Renta(idUsuario=idUsuario, idPelicula=idPelicula, fecha_renta=fecha_renta, dias_de_renta=dias_de_renta, estatus=estatus)
+    db.session.add(new_rent)
+    db.session.commit()
+    return 0;
+
+
 def get_rents():
-    for rent in Renta.query.all():
-        print(f'{rent}\n')
+   return Renta.query.all()
 
 
 def get_rent_by_id(rent_id):

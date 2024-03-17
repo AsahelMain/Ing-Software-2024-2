@@ -42,7 +42,8 @@ label {
 
 input[type="text"],
 input[type="password"],
-input[type="number"] {
+input[type="number"],
+input[type="date"] {
     width: calc(100% - 10px);
     padding: 8px;
     margin-bottom: 10px;
@@ -64,6 +65,7 @@ button {
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 button:hover {

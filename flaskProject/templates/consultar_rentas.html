@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de rentas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='consulta_style.css') }}">
+    <style>
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9; 
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #ffffff; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Consulta de rentas</h1>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID renta</th>
+                <th>ID usuario</th>
+                <th>ID pelicula</th>
+                <th>Fecha de renta</th>
+                <th>Días de renta</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for renta in rentas %}
+            {% set fecha_renta = renta.fecha_renta %}
+            {% set dias_de_renta = renta.dias_de_renta %}
+            {% set dias_transcurridos = (fecha_actual - fecha_renta).days %}
+            <tr {% if dias_transcurridos > dias_de_renta %}style="background-color: #ffcccc;"{% endif %}>
+                <td>{{ renta.idRentar }}</td>
+                <td>{{ renta.idUsuario }}</td>
+                <td>{{ renta.idPelicula }}</td>
+                <td>{{ renta.fecha_renta }}</td>
+                <td>{{ renta.dias_de_renta }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
