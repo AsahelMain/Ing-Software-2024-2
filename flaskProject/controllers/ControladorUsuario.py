@@ -24,4 +24,15 @@ def agregar_usuario():
             print(e)
             return render_template('resultado.html', titulo="Agregar usuario", resultado="Ocurrió un problema al agregar el usuario :(")
 
+@blueprint_usuario.route('/consultar', methods=['GET'])
+def consultar_usuarios():
+    try:
+        usuarios = model_usuario.get_users()
+        return render_template('consultar_usuarios.html', usuarios=usuarios)
+    except Exception as e:
+        print(e)
+        return render_template('resultado.html', titulo="Consultar usuarios", resultado="Ocurrió un problema al consultar los usuarios :/")
+
+    
+
 
