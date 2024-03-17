@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de películas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='consulta_style.css') }}">
+</head>
+<body>
+
+    <div class="header">
+        <h1>Consulta de películas</h1>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Género</th>
+                <th>Duración</th>
+                <th>Inventario</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pelicula in peliculas %}
+            <tr>
+                <td>{{ pelicula.idPelicula }}</td>
+                <td>{{ pelicula.nombre }}</td>
+                <td>{{ pelicula.genero }}</td>
+                <td>{{ pelicula.duracion }}</td>
+                <td>{{ pelicula.inventario }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

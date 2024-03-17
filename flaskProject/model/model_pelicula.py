@@ -9,8 +9,7 @@ def add_movie(nombre, inventario=1, genero=None, duracion=None):
 
 
 def get_movies():
-    for movie in Pelicula.query.all():
-        print(f'{movie}\n')
+    return Pelicula.query.all()
 
 def get_movie_by_id(movie_id):
     return Pelicula.query.filter(Pelicula.idPelicula == movie_id).first()

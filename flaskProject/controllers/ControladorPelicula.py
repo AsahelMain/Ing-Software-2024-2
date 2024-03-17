@@ -9,19 +9,26 @@ def agregar_pelicula():
         return render_template('agrega_pelicula.html')
     else:
         name = request.form['name']
-        ap_pat = request.form['ap_pat']
-        ap_mat = request.form['ap_mat']
-        password = request.form['password']
-        email = request.form['email']
-        super_user = request.form['super_user']
-        
-        is_super_user = super_user == 'yes'
+        stock = request.form['stock']
+        genre = request.form['genre']
+        length = request.form['length']
 
         try:
-            model_usuario.add_user(name,ap_pat,password,ap_mat,email,None,is_super_user)
-            return render_template('resultado.html', titulo="Agregar usuario", resultado="Se agregó el usuario exitosamente :)")
+            model_pelicula.add_movie(name,stock,genre,length)
+            return render_template('resultado.html', titulo="Agregar película", resultado="Se agregó la película exitosamente :)")
         except Exception as e:
             print(e)
-            return render_template('resultado.html', titulo="Agregar usuario", resultado="Ocurrió un problema al agregar el usuario :(")
+            return render_template('resultado.html', titulo="Agregar película", resultado="Ocurrió un problema al agregar la película :(")
+
+@blueprint_pelicula.route('/consultar', methods=['GET'])
+def consultar_usuarios():
+    try:
+        peliculas = model_pelicula.get_movies()
+        return render_template('consultar_peliculas.html', peliculas=peliculas)
+    except Exception as e:
+        print(e)
+        return render_template('resultado.html', titulo="Consultar peliculas", resultado="Ocurrió un problema al consultar las películas :/")
+
+    
 
 
