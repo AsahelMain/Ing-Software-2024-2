@@ -29,8 +29,8 @@
                 <td>{{ usuario.idUsuario }}</td>
                 <td>{{ usuario.nombre }}</td>
                 <td>{{ usuario.apPat }}</td>
-                <td>{{ usuario.apMat }}</td>
-                <td>{{ usuario.email }}</td>
+                <td>{% if usuario.apMat %}{{ usuario.apMat }}{% else %}{{ "" }}{% endif %}</td>
+                <td>{% if usuario.email %}{{ usuario.email }}{% else %}{{ "" }}{% endif %}</td>
             </tr>
             {% endfor %}
         </tbody>
