@@ -25,7 +25,7 @@ def agregar_renta():
             return render_template('resultado.html', titulo="Agregar renta", resultado="Ocurrió un problema al agregar la renta :(")
 
 @blueprint_renta.route('/consultar', methods=['GET'])
-def consultar_usuarios():
+def consultar_rentas():
     try:
         rentas = model_renta.get_rents()
         fecha_actual = datetime.now()
@@ -34,5 +34,22 @@ def consultar_usuarios():
         print(e)
         return render_template('resultado.html', titulo="Consultar rentas", resultado="Ocurrió un problema al consultar las rentas :/")
     
+@blueprint_renta.route('/actualizar', methods=['GET', 'POST'])
+def actualizar_renta():
+    if request.method == 'GET':
+        return render_template('actualiza_renta.html')
+    else:
+        rent_id = request.form['rent_id']
+        status = request.form['status']
+
+        status = status == 'true'
+
+        try:
+            model_renta.update_rent(rent_id, status)
+            return render_template('resultado.html', titulo="Actualiza renta", resultado="Se actualizó la renta exitosamente :)")
+        except Exception as e:
+            print(e)
+            return render_template('resultado.html', titulo="Actualiza renta", resultado="Ocurrió un problema al actualizar la renta :(")
+
 
 

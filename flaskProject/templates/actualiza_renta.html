@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar película</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='agrega_style.css') }}">
+</head>
+<body>
+    <h1>Actualizar película</h1>
+    <form method="post">
+    <label for="rent_id">Ingrese el ID de la renta a actualizar:</label>
+    <input type="text" name="rent_id" id="rent_id" required>
+    <br>
+    <label for="status">Seleccione el nuevo estatus:</label>
+        <select name="status" id="status">
+            <option value="false">No devuelta</option>
+            <option value="true">Devuelta</option>
+        </select>
+    <br>
+    <button>Actualizar película</button>
+    </form>
+    {% if get_flashed_messages() %}
+        {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

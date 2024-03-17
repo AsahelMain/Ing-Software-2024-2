@@ -16,6 +16,13 @@ def get_rents():
 def get_rent_by_id(rent_id):
     return Renta.query.filter(Renta.idRentar == rent_id).first()
 
+def update_rent(rent_id, status):
+    rent = get_rent_by_id(rent_id)
+    rent.estatus = status
+    db.session.commit()
+    return 0
+
+
 
 def get_new_date():
     year = 0
