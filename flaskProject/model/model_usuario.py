@@ -14,6 +14,28 @@ def get_users():
 def get_user_by_id(user_id):
     return Usuario.query.filter(Usuario.idUsuario == user_id).first()
 
+def update_user(user_id, name=None, ap_pat=None, ap_mat=None, password=None, email=None, super_user=None):
+    user = get_user_by_id(user_id)
+
+    updates = {
+        'nombre': name,
+        'apPat': ap_pat,
+        'apMat': ap_mat,
+        'password': password,
+        'email': email,
+        'superUser': super_user
+    }
+
+    for key, value in updates.items():
+        if value is not None:
+            setattr(user, key, value)
+    
+    db.session.commit()
+    
+    return 0;
+
+    
+
 def change_user_name(user_id, new_name):
     user = get_user_by_id(user_id)
     if user:

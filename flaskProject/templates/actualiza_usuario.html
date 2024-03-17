@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar usuario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='agrega_style.css') }}">
+</head>
+<body>
+    <h1>Actualizar usuario</h1>
+    <form method="post">
+    <label for="id">Ingrese el ID del usuario a actualizar:</label>
+    <input type="text" name="id" id="id" required>
+    <br>
+    <label for="name">Ingrese el nuevo nombre:</label>
+    <input type="text" name="name" id="name">
+    <br>
+    <label for="ap_pat">Ingrese el nuevo apellido paterno:</label>
+    <input type="text" name="ap_pat" id="ap_pat">
+    <br>
+    <label for="ap_mat">Ingrese el nuevo apellido materno:</label>
+    <input type="text" name="ap_mat" id="ap_mat">
+    <br>
+    <label for="password">Ingrese la nueva contraseña:</label>
+    <input type="password" name="password" id="password">
+    <br>
+    <label for="email">Ingrese el nuevo correo electrónico:</label>
+    <input type="text" name="email" id="email">
+    <br>
+    <label for="super_user">¿Es super usuario?</label>
+        <select name="super_user" id="super_user">
+            <option value="no">No</option>
+            <option value="yes">Sí</option>
+        </select>
+    <br>
+    <button>Actualizar usuario</button>
+    </form>
+    {% if get_flashed_messages() %}
+        {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

@@ -8,12 +8,12 @@ def agregar_usuario():
     if request.method == 'GET':
         return render_template('agrega_usuario.html')
     else:
-        name = request.form['name']
-        ap_pat = request.form['ap_pat']
-        ap_mat = request.form['ap_mat']
-        password = request.form['password']
-        email = request.form['email']
-        super_user = request.form['super_user']
+        name = request.form['name'] or None
+        ap_pat = request.form['ap_pat'] or None
+        ap_mat = request.form['ap_mat'] or None
+        password = request.form['password'] or None
+        email = request.form['email'] or None
+        super_user = request.form['super_user'] or None
         
         is_super_user = super_user == 'yes'
 
@@ -33,6 +33,24 @@ def consultar_usuarios():
         print(e)
         return render_template('resultado.html', titulo="Consultar usuarios", resultado="Ocurrió un problema al consultar los usuarios :/")
 
-    
+@blueprint_usuario.route('/actualizar', methods=['GET', 'POST'])
+def actualizar_usuario():
+    if request.method == 'GET':
+        return render_template('actualiza_usuario.html')
+    else:
+        user_id = request.form['id'] or None
+        name = request.form['name'] or None
+        ap_pat = request.form['ap_pat'] or None
+        ap_mat = request.form['ap_mat'] or None
+        password = request.form['password'] or None
+        email = request.form['email'] or None
+        super_user = request.form['super_user']
 
+        is_super_user = super_user == 'yes'
 
+        try:
+            model_usuario.update_user(user_id, name, ap_pat, ap_mat, password, email, is_super_user)
+            return render_template('resultado.html', titulo="Actualiza usuario", resultado="Se actualizó el usuario exitosamente :)")
+        except Exception as e:
+            print(e)
+            return render_template('resultado.html', titulo="Actualiza usuario", resultado="Ocurrió un problema al actualizar el usuario :(")
