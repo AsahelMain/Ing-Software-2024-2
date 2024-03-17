@@ -30,6 +30,7 @@
                 <th>ID pelicula</th>
                 <th>Fecha de renta</th>
                 <th>Días de renta</th>
+                <th>Estatus</th>
             </tr>
         </thead>
         <tbody>
@@ -43,6 +44,7 @@
                 <td>{{ renta.idPelicula }}</td>
                 <td>{{ renta.fecha_renta }}</td>
                 <td>{{ renta.dias_de_renta }}</td>
+                <td>{% if renta.estatus == True %}{{ "Devuelta" }}{% else %}{{ "No devuelta" }}{% endif %}</td>
             </tr>
             {% endfor %}
         </tbody>
