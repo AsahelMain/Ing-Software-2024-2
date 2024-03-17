@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de usuarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='consulta_style.css') }}">
+</head>
+<body>
+
+    <div class="header">
+        <h1>Consulta de usuarios</h1>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.idUsuario }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apPat }}</td>
+                <td>{{ usuario.apMat }}</td>
+                <td>{{ usuario.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
