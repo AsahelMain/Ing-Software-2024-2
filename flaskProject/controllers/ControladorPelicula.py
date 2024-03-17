@@ -11,7 +11,7 @@ def agregar_pelicula():
         name = request.form['name']
         stock = request.form['stock']
         genre = request.form['genre']
-        length = request.form['length']
+        length = request.form['length'] or None
 
         try:
             model_pelicula.add_movie(name,stock,genre,length)
@@ -29,6 +29,20 @@ def consultar_usuarios():
         print(e)
         return render_template('resultado.html', titulo="Consultar peliculas", resultado="Ocurrió un problema al consultar las películas :/")
 
-    
+@blueprint_pelicula.route('/actualizar', methods=['GET', 'POST'])
+def actualizar_pelicula():
+    if request.method == 'GET':
+        return render_template('actualiza_pelicula.html')
+    else:
+        movie_id = request.form['id']
+        name = request.form['name'] or None
+        stock = request.form['stock'] or None
+        genre = request.form['genre'] or None
+        length = request.form['length'] or None
 
-
+        try:
+            model_pelicula.update_movie(movie_id, name, genre, length, stock)
+            return render_template('resultado.html', titulo="Actualiza película", resultado="Se actualizó la película exitosamente :)")
+        except Exception as e:
+            print(e)
+            return render_template('resultado.html', titulo="Actualiza película", resultado="Ocurrió un problema al actualizar la película :(")

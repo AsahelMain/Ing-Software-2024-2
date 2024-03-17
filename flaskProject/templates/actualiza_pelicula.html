@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar película</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='agrega_style.css') }}">
+</head>
+<body>
+    <h1>Actualizar película</h1>
+    <form method="post">
+    <label for="id">Ingrese el ID de la pelicula a actualizar:</label>
+    <input type="text" name="id" id="id" required>
+    <br>
+    <label for="name">Ingrese el nuevo nombre:</label>
+    <input type="text" name="name" id="name">
+    <br>
+    <label for="genre">Ingrese el nuevo género:</label>
+    <input type="text" name="genre" id="genre">
+    <br>
+    <label for="length">Ingrese la nueva duración:</label>
+    <input type="number" name="length" id="length">
+    <br>
+    <label for="stock">Ingrese un número representario el inventario: </label>
+    <input type="number" name="stock" id="stock">
+    <br>
+    <button>Actualizar película</button>
+    </form>
+    {% if get_flashed_messages() %}
+        {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

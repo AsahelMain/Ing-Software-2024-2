@@ -28,8 +28,8 @@
             <tr>
                 <td>{{ pelicula.idPelicula }}</td>
                 <td>{{ pelicula.nombre }}</td>
-                <td>{{ pelicula.genero }}</td>
-                <td>{{ pelicula.duracion }}</td>
+                <td>{% if pelicula.genero %}{{ pelicula.genero }}{% else %}{{ "" }}{% endif %}</td>
+                <td>{% if pelicula.duracion %}{{ pelicula.duracion }}{% else %}{{ "" }}{% endif %}</td>
                 <td>{{ pelicula.inventario }}</td>
             </tr>
             {% endfor %}

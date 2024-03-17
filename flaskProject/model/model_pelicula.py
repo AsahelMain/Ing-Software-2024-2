@@ -14,6 +14,26 @@ def get_movies():
 def get_movie_by_id(movie_id):
     return Pelicula.query.filter(Pelicula.idPelicula == movie_id).first()
 
+
+def update_movie(movie_id, name=None, genre=None, length=None, stock=None):
+    movie = get_movie_by_id(movie_id)
+    
+    updates = {
+        'idPelicula': movie_id,
+        'nombre': name,
+        'genero': genre,
+        'duracion': length,
+        'inventario': stock,
+    }
+
+    for key, value in updates.items():
+        if value is not None:
+            setattr(movie, key, value)
+    
+    db.session.commit()
+    
+    return 0;
+
 def change_movie_name(movie_id, new_name):
     movie = get_movie_by_id(movie_id)
     if movie:
