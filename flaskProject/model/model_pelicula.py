@@ -1,6 +1,13 @@
 from alchemyClasses.Pelicula import Pelicula
 from alchemyClasses import db
 
+def add_movie(nombre, inventario=1, genero=None, duracion=None):
+    new_movie = Pelicula(nombre=nombre, inventario=inventario, genero=genero, duracion=duracion)
+    db.session.add(new_movie)
+    db.session.commit()
+    return 0;
+
+
 def get_movies():
     for movie in Pelicula.query.all():
         print(f'{movie}\n')
