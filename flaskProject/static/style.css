@@ -100,3 +100,10 @@ body {
 .read { order: 2; }
 .update { order: 3; }
 .delete { order: 4; }
+
+.main-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; /* Vertically center the squares */
+    height: 80vh;
+}
