@@ -54,3 +54,17 @@ def actualizar_usuario():
         except Exception as e:
             print(e)
             return render_template('resultado.html', titulo="Actualiza usuario", resultado="Ocurrió un problema al actualizar el usuario :(")
+
+@blueprint_usuario.route('/eliminar', methods=['GET', 'POST'])
+def eliminar_usuario():
+    if request.method == 'GET':
+        return render_template('elimina_usuario.html')
+    else:
+        user_id = request.form['user_id'] or None
+
+        try:
+            model_usuario.delete_user(user_id)
+            return render_template('resultado.html', titulo="Elimina usuario", resultado="Se eliminó el usuario exitosamente :)")
+        except Exception as e:
+            print(e)
+            return render_template('resultado.html', titulo="Elimina usuario", resultado="Ocurrió un problema al eliminar el usuario :(")

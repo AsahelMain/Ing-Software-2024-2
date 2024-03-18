@@ -11,7 +11,7 @@ class Usuario(db.Model):
     email = Column(String(500), nullable=True, unique=True)
     profilePicture = Column(LargeBinary, nullable=True)
     superUser = Column(Boolean,nullable=True)
-    #renta = db.relationship("Renta", backref="usuario",cascade="all, delete-orphan")
+    renta = db.relationship("Renta", backref="usuario",cascade="all, delete-orphan")
 
     def __init__(self, nombre, apPat, password, apMat=None, email=None, profilePicture=None, superUser=None):
         self.nombre = nombre
