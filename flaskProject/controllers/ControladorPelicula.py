@@ -46,3 +46,17 @@ def actualizar_pelicula():
         except Exception as e:
             print(e)
             return render_template('resultado.html', titulo="Actualiza película", resultado="Ocurrió un problema al actualizar la película :(")
+
+@blueprint_pelicula.route('/eliminar', methods=['GET', 'POST'])
+def eliminar_pelicula():
+    if request.method == 'GET':
+        return render_template('elimina_pelicula.html')
+    else:
+        movie_id = request.form['movie_id'] or None
+
+        try:
+            model_pelicula.delete_movie(movie_id)
+            return render_template('resultado.html', titulo="Elimina película", resultado="Se eliminó la película exitosamente :)")
+        except Exception as e:
+            print(e)
+            return render_template('resultado.html', titulo="Elimina película", resultado="Ocurrió un problema al eliminar la película :(")

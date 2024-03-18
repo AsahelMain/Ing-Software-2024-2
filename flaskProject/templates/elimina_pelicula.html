@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Elimina usuario</title>
+    <title>Elimina película</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='agrega_style.css') }}">
 </head>
 <body>
-    <h1>Elimina usuario</h1>
+    <h1>Elimina película</h1>
     <form method="post">
-    <label for="user_id">Ingrese el ID del usuario:</label>
-    <input type="text" name="user_id" id="user_id" required>
+    <label for="movie_id">Ingrese el ID de la película:</label>
+    <input type="text" name="movie_id" id="movie_id" required>
     <br>
-    <button>Elimina usuario</button>
+    <button>Elimina película</button>
+    <label class="disclaimer">Se borrarán todas las rentas asociadas</label>
     </form>
     {% if get_flashed_messages() %}
         {% for message in get_flashed_messages() %}

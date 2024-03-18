@@ -94,3 +94,8 @@ select:focus {
 form {
     width: 400px;
 }
+
+.disclaimer {
+    margin-top: 12px;
+    font-size: small;
+}
