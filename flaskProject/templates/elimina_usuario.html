@@ -12,6 +12,7 @@
     <input type="text" name="user_id" id="user_id" required>
     <br>
     <button>Elimina usuario</button>
+    <label class="disclaimer">Se borrarán todas las rentas asociadas</label>
     </form>
     {% if get_flashed_messages() %}
         {% for message in get_flashed_messages() %}
