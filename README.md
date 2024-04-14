@@ -1,10 +1,10 @@
-# Ingeniería de Software 2024-2
-Repositorio oficial de la materia de Ingenieria de Software de la Facultad de Ciencias de la UNAM del semestre 2024-2
+# 4-react
 
-## Profesores:
+## Instrucciones
 
-- Francisco Valdes Souto
-- Valeria Garcia Landa
-- Fernando Fong
-- Erick Martínez Piza
-- Adriana Hernandez Gasca
+Situarse en el directorio clone-buster-app y ejecutar el siguiente comando
+
+```bash
+npm install
+npm start
+```
