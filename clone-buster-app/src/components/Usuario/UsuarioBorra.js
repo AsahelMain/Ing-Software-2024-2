@@ -25,7 +25,7 @@ function UsuarioBorra({ onEliminarUsuario }) {
                 <input type="text" name="user_id" id="user_id" value={userId} onChange={userIdHandler} required />
                 <br />
                 <button>Eliminar usuario</button>
-                <label className={classes.disclaimer}>Se borrarán todas las rentas asociadas</label>
+                <label className={classes.disclaimer}>Se borrará permanentemente</label>
             </form>
         </div>
     );

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import classes from './UsuarioAgrega.module.css';
 
-function UsuarioAgrega({ onAgregarUsuario, onIncrementaId, id }) {
+function UsuarioAgrega({ onAgregarUsuario, onIncrementaIdUsuario, id }) {
   const navigate = useNavigate('');
 
   const [nombre, setNombre] = useState('');
@@ -40,7 +40,7 @@ function UsuarioAgrega({ onAgregarUsuario, onIncrementaId, id }) {
   function submitHandler(event) {
     event.preventDefault();
 
-    onIncrementaId();
+    onIncrementaIdUsuario();
 
     const postData = {
         idUsuario: id,
@@ -58,7 +58,7 @@ function UsuarioAgrega({ onAgregarUsuario, onIncrementaId, id }) {
 
   return (
     <div>
-      <h1>Agregar usuario</h1>
+      <h1 className={classes.header}>Agregar usuario</h1>
       <form onSubmit={submitHandler}>
         <label htmlFor="name">Ingrese el nombre:</label>
         <input type="text" name="name" id="name" required onChange={nombreHandler}/>

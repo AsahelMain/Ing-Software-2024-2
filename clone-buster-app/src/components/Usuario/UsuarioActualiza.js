@@ -44,11 +44,7 @@ function UsuarioActualiza({ onActualizarUsuario, usuarios }) {
     }
 
     function obtenerUsuarioPorId(id) {
-        console.log("Id: ");
-        console.log(id);
-        const usuario = usuarios.find(user => user.idUsuario === parseInt(id));
-
-        console.log(usuario);
+        const usuario = usuarios.find(usuario => usuario.idUsuario === parseInt(id));
 
         return usuario || null;
     }
@@ -81,7 +77,7 @@ function UsuarioActualiza({ onActualizarUsuario, usuarios }) {
 
     return (
         <div>
-          <h1>Actualizar usuario</h1>
+          <h1 className={classes.header}>Actualizar usuario</h1>
           <form onSubmit={submitHandler}>
             <label htmlFor="id">Ingrese el ID del usuario a actualizar:</label>
             <input type="text" name="id" id="id" value={targetId} onChange={idHandler} required />
