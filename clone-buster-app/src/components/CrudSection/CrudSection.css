@@ -1,0 +1,13 @@
+.crud-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+.create { order: 1; }
+.read { order: 2; }
+.update { order: 3; }
+.delete { order: 4; }

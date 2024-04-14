@@ -1,0 +1,16 @@
+.button {
+    width: 150px;
+    height: 150px;
+    background-color: #8884ff;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 10px;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-wrap: 1;
+}

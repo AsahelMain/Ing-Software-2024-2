@@ -1,0 +1,30 @@
+.firstSection {
+    background-color: #8884ff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin-top: 20px;
+    border-radius: 10px;
+    
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 200px;
+    padding: 10px;
+    justify-content: center;
+  }
+  
+  .header {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header .text {
+    font-weight: bold;
+    font-size: 24px;
+  }
