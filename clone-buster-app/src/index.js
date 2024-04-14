@@ -7,6 +7,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UsuarioConsulta from './components/Usuario/UsuarioConsulta';
 import UsuarioAgrega from './components/Usuario/UsuarioAgrega';
+import UsuarioBorra from './components/Usuario/UsuarioBorra';
+import UsuarioActualiza from './components/Usuario/UsuarioActualiza';
 
 const AppWithRouter = () => {
   const [usuarios, setUsuarios] = useState([
@@ -77,10 +79,24 @@ const AppWithRouter = () => {
      setUsuarios((usuarios) => [...usuarios, nuevoUsuario]);
   }
 
+  function eliminaUsuario(idUsuario) {
+    setUsuarios((usuarios) => usuarios.filter((usuario) => usuario.idUsuario !== parseInt(idUsuario)));
+  }
+
+  function actualizaUsuario(updatedUser) {
+    setUsuarios((usuarios) =>
+        usuarios.map((usuario) =>
+            usuario.idUsuario === updatedUser.idUsuario ? { ...usuario, ...updatedUser } : usuario
+        )
+    );
+}
+
   const router = createBrowserRouter([
       {path: '/', element: <App />},
       {path: '/usuario-consultar', element: <UsuarioConsulta usuarios={usuarios} />},
-      {path: '/usuario-agregar', element: <UsuarioAgrega onAgregarUsuario={agregarUsuario} onIncrementaId={incrementaId} id={id}/>}
+      {path: '/usuario-agregar', element: <UsuarioAgrega onAgregarUsuario={agregarUsuario} onIncrementaId={incrementaId} id={id}/>},
+      {path: '/usuario-borrar', element: <UsuarioBorra onEliminarUsuario={eliminaUsuario} />},
+      {path: '/usuario-actualizar', element: <UsuarioActualiza usuarios={usuarios} onActualizarUsuario={actualizaUsuario}/>}
   ]);
 
   return (

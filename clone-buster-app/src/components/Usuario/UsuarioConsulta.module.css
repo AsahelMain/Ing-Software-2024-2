@@ -23,7 +23,8 @@ body {
     align-content: center;
     justify-content: center;
     width: 800px;
-    margin-top: 50px;
+    height: 80px;
+    margin-top: 40px;
     background-color: #8884ff;
     border-radius: 10px;
 }
@@ -31,6 +32,7 @@ body {
 
 h1 {
     color: white;
+    margin: 15px
 }
 
 table {
